@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {Task} from '../../types';
+import {Icons} from '../../assets/icons';
 
 interface TaskItemProps {
   task: Task;
@@ -9,25 +10,13 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({task, onToggle}) => {
-  const getTaskIcon = (title: string) => {
-    if (title.includes('meeting') || title.includes('Meeting')) return 'users';
-    if (title.includes('Meditation') || title.includes('Simran')) return 'user';
-    if (title.includes('Save') || title.includes('Rupees'))
-      return 'trending-up';
-    if (title.includes('Walk') || title.includes('Step')) return 'activity';
-    if (title.includes('Buy') || title.includes('Sunflower')) return 'user';
-    if (title.includes('Make') || title.includes('Mandala')) return 'edit-3';
-    return 'check-square';
-  };
-
   return (
     <TouchableOpacity
       style={styles.container}
       onPress={() => onToggle(task.id)}
       activeOpacity={0.7}>
-      <View
-        style={[styles.iconContainer, {backgroundColor: task.backgroundColor}]}>
-        <Icon name={getTaskIcon(task.title)} size={20} color={task.iconColor} />
+      <View style={styles.iconContainer}>
+        <Image source={task?.icon} style={[styles.icon]} resizeMode="contain" />
       </View>
 
       <View style={styles.contentContainer}>
@@ -35,11 +24,10 @@ const TaskItem: React.FC<TaskItemProps> = ({task, onToggle}) => {
           {task.title}
         </Text>
         <View style={styles.metaContainer}>
-          <Icon
-            name="clock"
-            size={11}
-            color="#9CA3AF"
-            style={styles.clockIcon}
+          <Image
+            source={Icons.clock}
+            style={[styles.clockIcon, {tintColor: '#9CA3AF'}]}
+            resizeMode="contain"
           />
           <Text style={styles.time}>{task.time}</Text>
           {task.timeLabel && (
@@ -60,11 +48,15 @@ const TaskItem: React.FC<TaskItemProps> = ({task, onToggle}) => {
       <TouchableOpacity
         onPress={() => onToggle(task.id)}
         style={styles.checkButton}>
-        <Icon
-          name={task.completed ? 'check-circle' : 'circle'}
-          size={22}
-          color={task.completed ? '#10B981' : '#E5E7EB'}
-        />
+        {task.completed ? (
+          <Image
+            source={Icons.tick}
+            style={[styles.checkIcon, {tintColor: '#10B981'}]}
+            resizeMode="contain"
+          />
+        ) : (
+          <Icon name="circle" size={22} color="#E5E7EB" />
+        )}
       </TouchableOpacity>
     </TouchableOpacity>
   );
@@ -94,13 +86,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginRight: 12,
   },
+  icon: {
+    width: 53,
+    height: 53,
+  },
   contentContainer: {
     flex: 1,
   },
   title: {
     fontSize: 15,
-    fontWeight: '600',
-    color: '#1F2937',
+    fontWeight: '500',
+    color: '#111827',
     marginBottom: 4,
   },
   metaContainer: {
@@ -108,23 +104,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   clockIcon: {
+    width: 12,
+    height: 12,
     marginRight: 4,
   },
   time: {
     fontSize: 12,
-    color: '#9CA3AF',
-    marginRight: 6,
+    color: '#6B7280',
+    marginRight: 4,
   },
   timeLabel: {
     fontSize: 12,
-    color: '#9CA3AF',
+    color: '#10B981',
     marginRight: 8,
   },
   separator: {
     width: 1,
     height: 12,
     backgroundColor: '#E5E7EB',
-    marginHorizontal: 8,
+    marginRight: 8,
   },
   tag: {
     fontSize: 12,
@@ -132,11 +130,15 @@ const styles = StyleSheet.create({
   },
   tagSeparator: {
     fontSize: 12,
-    color: '#E5E7EB',
+    color: '#D1D5DB',
     marginHorizontal: 4,
   },
   checkButton: {
     padding: 4,
+  },
+  checkIcon: {
+    width: 22,
+    height: 22,
   },
 });
 

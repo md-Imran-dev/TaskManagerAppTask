@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import TaskItem from './TaskItem';
 import {Task} from '../../types';
+import {Icons} from '../../assets/icons';
 
 const TaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([
@@ -11,8 +12,8 @@ const TaskList: React.FC = () => {
       time: '09:00 AM',
       tags: ['Habit', 'Must ❤️'],
       completed: true,
-      iconColor: '#3B82F6',
-      backgroundColor: '#DBEAFE',
+
+      icon: Icons.meeting,
     },
     {
       id: '2',
@@ -20,8 +21,7 @@ const TaskList: React.FC = () => {
       time: '05:00 AM',
       tags: ['Habit', 'Must ❤️'],
       completed: false,
-      iconColor: '#F59E0B',
-      backgroundColor: '#FEF3C7',
+      icon: Icons.meditation,
     },
     {
       id: '3',
@@ -29,8 +29,7 @@ const TaskList: React.FC = () => {
       time: '12:00 PM',
       tags: ['Habit', 'Must ❤️'],
       completed: false,
-      iconColor: '#10B981',
-      backgroundColor: '#D1FAE5',
+      icon: Icons.save,
     },
     {
       id: '4',
@@ -39,8 +38,7 @@ const TaskList: React.FC = () => {
       timeLabel: '12/31',
       tags: ['Habit', 'Important ❤️'],
       completed: false,
-      iconColor: '#6366F1',
-      backgroundColor: '#E0E7FF',
+      icon: Icons.walk,
     },
     {
       id: '5',
@@ -49,8 +47,7 @@ const TaskList: React.FC = () => {
       timeLabel: '0/1',
       tags: ['Task', 'Important ❤️'],
       completed: false,
-      iconColor: '#EF4444',
-      backgroundColor: '#FEE2E2',
+      icon: Icons.sunflower,
     },
     {
       id: '6',
@@ -59,8 +56,7 @@ const TaskList: React.FC = () => {
       timeLabel: '12/30',
       tags: ['Task', 'Important ❤️'],
       completed: false,
-      iconColor: '#8B5CF6',
-      backgroundColor: '#EDE9FE',
+      icon: Icons.daily,
     },
   ]);
 

@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from 'react-native';
+
 export interface Task {
     id: string;
     title: string;
@@ -5,19 +7,19 @@ export interface Task {
     timeLabel?: string;
     tags: string[];
     completed: boolean;
-    iconColor: string;
-    backgroundColor: string;
-  }
-  
-  export interface DateItem {
+    
+    icon?: ImageSourcePropType;
+}
+
+export interface DateItem {
     day: string;
     date: number;
     isSelected: boolean;
-  }
-  
-  export interface DrawerOption {
+}
+
+export interface DrawerOption {
     id: string;
     title: string;
     subtitle: string;
-    icon: string;
-  }
+    icon: ImageSourcePropType;
+}

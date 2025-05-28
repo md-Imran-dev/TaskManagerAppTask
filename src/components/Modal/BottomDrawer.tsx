@@ -7,6 +7,7 @@ import {
   Modal,
   TouchableWithoutFeedback,
   Dimensions,
+  Image,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -16,6 +17,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Feather';
 import {DrawerOption} from '../../types';
+import {Icons} from '../../assets/icons';
 
 const {height} = Dimensions.get('window');
 
@@ -25,27 +27,27 @@ const DRAWER_OPTIONS: DrawerOption[] = [
     title: 'Habit',
     subtitle:
       'Activity that repeats over time it has detailed tracking and statistics.',
-    icon: 'refresh-cw',
+    icon: Icons.habit,
   },
   {
     id: '2',
     title: 'Recurring Task',
     subtitle:
       'Activity that repeats over time it has detailed tracking and statistics.',
-    icon: 'repeat',
+    icon: Icons.task,
   },
   {
     id: '3',
     title: 'Task',
     subtitle: 'Single instance activity without tracking over time.',
-    icon: 'check',
+    icon: Icons.task,
   },
   {
     id: '4',
     title: 'Goal of the Day',
     subtitle:
       'A specific target set for oneself to achieve within a single day.',
-    icon: 'target',
+    icon: Icons.goal,
   },
 ];
 
@@ -111,7 +113,7 @@ const BottomDrawer = ({visible, onClose, onSelect}: BottomDrawerProps) => {
               onPress={() => handleOptionPress(option)}
               activeOpacity={0.7}>
               <View style={styles.iconContainer}>
-                <Icon name={option.icon} size={24} color="#374151" />
+                <Image source={option.icon} style={styles.icon} />
               </View>
 
               <View style={styles.textContainer}>
@@ -179,6 +181,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6B7280',
     lineHeight: 18,
+  },
+  icon: {
+    width: 24,
+    height: 24,
   },
 });
 

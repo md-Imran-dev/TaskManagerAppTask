@@ -5,49 +5,34 @@ import {
   TouchableOpacity,
   StyleSheet,
   StatusBar,
+  Image,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import {Icons} from '../../assets/icons';
 
 const Header: React.FC = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" backgroundColor="#F8F9FA" />
-      <View style={styles.statusBar}>
-        <Text style={styles.time}>9:41</Text>
-        <View style={styles.rightIcons}>
-          <Icon
-            name="signal"
-            size={14}
-            color="#1F2937"
-            style={styles.statusIcon}
-          />
-          <Icon
-            name="wifi"
-            size={14}
-            color="#1F2937"
-            style={styles.statusIcon}
-          />
-          <Icon name="battery" size={14} color="#1F2937" />
-        </View>
-      </View>
 
       <View style={styles.header}>
         <View style={styles.logoContainer}>
           <View style={styles.logoCircle}>
-            <Icon name="send" size={18} color="#FFFFFF" />
+            <Image source={Icons.logo} style={styles.logo} />
           </View>
           <Text style={styles.appName}>WingsFly</Text>
         </View>
 
         <View style={styles.rightContainer}>
           <TouchableOpacity style={styles.iconButton}>
-            <Icon name="search" size={20} color="#374151" />
+            {/* <Icon name="search" size={20} color="#374151" /> */}
+            <Image source={Icons.search} style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
-            <Icon name="calendar" size={20} color="#374151" />
+            {/* <Icon name="calendar" size={20} color="#374151" /> */}
+            <Image source={Icons.calender} style={styles.icon} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconButton}>
-            <Icon name="help-circle" size={20} color="#374151" />
+            <Image source={Icons.help} style={styles.icon} />
           </TouchableOpacity>
         </View>
       </View>
@@ -89,12 +74,13 @@ const styles = StyleSheet.create({
   logoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 8,
   },
   logoCircle: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: '#5B47E0',
+    backgroundColor: 'rgb(39, 37 ,97)',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 8,
@@ -108,9 +94,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  logo: {
+    width: 24,
+    height: 24,
+  },
   iconButton: {
     padding: 8,
     marginLeft: 4,
+  },
+  icon: {
+    width: 20,
+    height: 20,
   },
 });
 

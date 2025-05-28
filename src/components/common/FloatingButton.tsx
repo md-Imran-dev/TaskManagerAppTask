@@ -1,11 +1,11 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
-import Icon from 'react-native-vector-icons/Feather';
+import {Icons} from '../../assets/icons';
 
 interface FloatingButtonProps {
   onPress: () => void;
@@ -33,7 +33,7 @@ const FloatingButton: React.FC<FloatingButtonProps> = ({onPress}) => {
         style={styles.button}
         onPress={handlePress}
         activeOpacity={0.8}>
-        <Icon name="plus" size={24} color="#FFFFFF" />
+        <Image source={Icons.add} style={styles.icon} />
       </TouchableOpacity>
     </Animated.View>
   );
@@ -46,17 +46,20 @@ const styles = StyleSheet.create({
     right: 20,
   },
   button: {
-    width: 56,
-    height: 56,
-    borderRadius: 28,
-    backgroundColor: '#5B47E0',
+    width: 53,
+    height: 53,
+    borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#5B47E0',
+    shadowColor: 'rgb(39, 37 ,97)',
     shadowOffset: {width: 0, height: 4},
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 8,
+  },
+  icon: {
+    width: 53,
+    height: 53,
   },
 });
 
