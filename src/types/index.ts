@@ -7,7 +7,6 @@ export interface Task {
     timeLabel?: string;
     tags: string[];
     completed: boolean;
-    
     icon?: ImageSourcePropType;
 }
 

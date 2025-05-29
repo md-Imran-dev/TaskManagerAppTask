@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
 import {Task} from '../../types';
 import {Icons} from '../../assets/icons';
 
@@ -24,24 +23,39 @@ const TaskItem: React.FC<TaskItemProps> = ({task, onToggle}) => {
           {task.title}
         </Text>
         <View style={styles.metaContainer}>
-          <Image
-            source={Icons.clock}
-            style={[styles.clockIcon, {tintColor: '#9CA3AF'}]}
-            resizeMode="contain"
-          />
-          <Text style={styles.time}>{task.time}</Text>
-          {task.timeLabel && (
-            <Text style={styles.timeLabel}>{task.timeLabel}</Text>
-          )}
-          <View style={styles.separator} />
-          {task.tags.map((tag, index) => (
-            <React.Fragment key={index}>
-              <Text style={styles.tag}>{tag}</Text>
-              {index < task.tags.length - 1 && (
-                <Text style={styles.tagSeparator}>|</Text>
-              )}
+          <View style={styles.timeTable}>
+            <Image
+              source={Icons.clockMain}
+              style={[styles.clockIcon, {tintColor: '#9CA3AF'}]}
+              resizeMode="contain"
+            />
+            <Image
+              source={Icons.calculator}
+              style={[styles.clockIcon, {tintColor: '#9CA3AF'}]}
+              resizeMode="contain"
+            />
+            <Text style={styles.time}>{task.time}</Text>
+            {task.timeLabel && (
+              <Text style={styles.timeLabel}>{task.timeLabel}</Text>
+            )}
+          </View>
+          <View style={styles.tagContainer}>
+            {task.tags.map((tag, index) => (
+              <React.Fragment key={index}>
+                <Text style={styles.tag}>{tag}</Text>
+                {index < task.tags.length - 1 && (
+                  <Text style={styles.tagSeparator}>|</Text>
+                )}
+              </React.Fragment>
+            ))}
+            <React.Fragment>
+              <Image
+                source={Icons.flag}
+                style={[styles.flag, {tintColor: '#9CA3AF'}]}
+                resizeMode="contain"
+              />
             </React.Fragment>
-          ))}
+          </View>
         </View>
       </View>
 
@@ -51,11 +65,15 @@ const TaskItem: React.FC<TaskItemProps> = ({task, onToggle}) => {
         {task.completed ? (
           <Image
             source={Icons.tick}
-            style={[styles.checkIcon, {tintColor: '#10B981'}]}
+            style={styles.checkIcon}
             resizeMode="contain"
           />
         ) : (
-          <Icon name="circle" size={22} color="#E5E7EB" />
+          <Image
+            source={Icons.circle}
+            style={[styles.checkIcon, {tintColor: '#E5E7EB'}]}
+            resizeMode="contain"
+          />
         )}
       </TouchableOpacity>
     </TouchableOpacity>
@@ -102,27 +120,29 @@ const styles = StyleSheet.create({
   metaContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 4,
   },
   clockIcon: {
     width: 12,
     height: 12,
-    marginRight: 4,
+    // marginRight: 4,
+    tintColor: 'red  ',
   },
   time: {
     fontSize: 12,
     color: '#6B7280',
-    marginRight: 4,
+    // marginRight: 4,
   },
   timeLabel: {
     fontSize: 12,
     color: '#10B981',
-    marginRight: 8,
+    // marginRight: 8,
   },
   separator: {
     width: 1,
     height: 12,
     backgroundColor: '#E5E7EB',
-    marginRight: 8,
+    // marginRight: 8,
   },
   tag: {
     fontSize: 12,
@@ -131,7 +151,7 @@ const styles = StyleSheet.create({
   tagSeparator: {
     fontSize: 12,
     color: '#D1D5DB',
-    marginHorizontal: 4,
+    // marginHorizontal: 4,
   },
   checkButton: {
     padding: 4,
@@ -139,6 +159,25 @@ const styles = StyleSheet.create({
   checkIcon: {
     width: 22,
     height: 22,
+  },
+  flag: {
+    width: 12,
+    height: 12,
+  },
+  timeTable: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#F9FA',
+    borderRadius: 6,
+    padding: 4,
+  },
+  tagContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 2,
+    backgroundColor: '#F6F6F6',
+    borderRadius: 6,
+    padding: 4,
   },
 });
 

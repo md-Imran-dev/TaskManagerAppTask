@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#1F2937',
     marginBottom: 8,
+    textAlign: 'center',
   },
   quote: {
     fontSize: 14,

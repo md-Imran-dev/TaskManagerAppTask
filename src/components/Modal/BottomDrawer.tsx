@@ -15,7 +15,6 @@ import Animated, {
   withSpring,
   withTiming,
 } from 'react-native-reanimated';
-import Icon from 'react-native-vector-icons/Feather';
 import {DrawerOption} from '../../types';
 import {Icons} from '../../assets/icons';
 
@@ -34,7 +33,7 @@ const DRAWER_OPTIONS: DrawerOption[] = [
     title: 'Recurring Task',
     subtitle:
       'Activity that repeats over time it has detailed tracking and statistics.',
-    icon: Icons.task,
+    icon: Icons.recruiting,
   },
   {
     id: '3',
@@ -121,7 +120,7 @@ const BottomDrawer = ({visible, onClose, onSelect}: BottomDrawerProps) => {
                 <Text style={styles.optionSubtitle}>{option.subtitle}</Text>
               </View>
 
-              <Icon name="chevron-right" size={20} color="#9CA3AF" />
+              <Image style={styles.arrow} source={Icons.arrow2} />
             </TouchableOpacity>
           ))}
         </Animated.View>
@@ -185,6 +184,10 @@ const styles = StyleSheet.create({
   icon: {
     width: 24,
     height: 24,
+  },
+  arrow: {
+    width: 7,
+    height: 14,
   },
 });
 

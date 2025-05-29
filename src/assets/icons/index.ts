@@ -16,6 +16,11 @@ import Task from './task.png';
 import Tick from './tick.png';
 import Walk from './walk.png';
 import Search from './search.png';
+import Recruiting from './recruiting.png'
+import Circle from './circle.png'
+import Flag from './flag.png'
+import ClockMain from './clockMain.png'
+import Calculator from './calculator.png'
 
 export const Icons = {
     add: Add,
@@ -36,4 +41,9 @@ export const Icons = {
     tick: Tick,
     walk: Walk,
     search: Search,
+    recruiting: Recruiting,
+    circle: Circle,
+    flag: Flag,
+    clockMain :ClockMain,
+    calculator :Calculator
 };

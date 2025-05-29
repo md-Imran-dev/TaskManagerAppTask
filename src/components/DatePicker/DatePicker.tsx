@@ -40,20 +40,32 @@ const DatePicker: React.FC = () => {
               index === selectedIndex && styles.selectedButton,
             ]}
             onPress={() => setSelectedIndex(index)}>
-            <Text
+            <View
               style={[
-                styles.dayText,
-                index === selectedIndex && styles.selectedText,
+                styles.dayContainer,
+                index === selectedIndex && styles.selectedDayContainer,
               ]}>
-              {item.day}
-            </Text>
-            <Text
+              <Text
+                style={[
+                  styles.dayText,
+                  index === selectedIndex && styles.selectedDayText,
+                ]}>
+                {item.day}
+              </Text>
+            </View>
+            <View
               style={[
-                styles.dateText,
-                index === selectedIndex && styles.selectedText,
+                styles.dateContainer,
+                index === selectedIndex && styles.selectedDateContainer,
               ]}>
-              {item.date}
-            </Text>
+              <Text
+                style={[
+                  styles.dateText,
+                  index === selectedIndex && styles.selectedDateText,
+                ]}>
+                {item.date}
+              </Text>
+            </View>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -63,36 +75,58 @@ const DatePicker: React.FC = () => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 12,
-    backgroundColor: '#F8F9FA',
+    paddingVertical: 16,
+    backgroundColor: '#FFFFFF',
   },
   scrollContent: {
     paddingHorizontal: 16,
   },
   dateButton: {
-    width: 46,
-    height: 64,
-    borderRadius: 16,
-    backgroundColor: '#E5E7EB',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 4,
+    width: 45,
+    height: 55,
+    borderRadius: 18,
+    marginHorizontal: 8,
+    overflow: 'hidden',
+    backgroundColor: '#F3F4F6',
   },
   selectedButton: {
-    backgroundColor: '#5B47E0',
+    backgroundColor: '#4546D4',
+  },
+  dayContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+  },
+  selectedDayContainer: {
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+  },
+  dateContainer: {
+    flex: 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#E5E7EB',
+    borderRadius: 14,
+    overflow: 'hidden',
+  },
+  selectedDateContainer: {
+    backgroundColor: '#3435B8',
   },
   dayText: {
     fontSize: 12,
     fontWeight: '500',
     color: '#6B7280',
-    marginBottom: 4,
+  },
+  selectedDayText: {
+    color: '#FFFFFF',
+    fontWeight: '600',
   },
   dateText: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '700',
     color: '#374151',
   },
-  selectedText: {
+  selectedDateText: {
     color: '#FFFFFF',
   },
 });
